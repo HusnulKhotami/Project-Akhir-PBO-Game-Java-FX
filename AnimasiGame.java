@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+//by animate in java fx and scane builder yang merupakan implementasi dari sebuah bahasa pemrograman java yang menggunakan GUI yang mengutamakan fungsi fungsi tertentu
+
 /**
  *
  * @author asus
