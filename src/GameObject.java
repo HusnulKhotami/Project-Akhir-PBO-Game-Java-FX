@@ -26,6 +26,6 @@ public abstract class GameObject {
         this.y = y;
     }
 
-    // Abstract method draw, yang wajib diimplementasikan oleh subclass
+    
     public abstract void draw(javafx.scene.canvas.GraphicsContext gc);
 }
