@@ -11,5 +11,10 @@ public class Food extends GameObject {
         super(x, y);
         randomizeType(); // Pilih jenis makanan secara acak
     }
+    // method untuk menentukan jenis objek makananan secara acak
+    public void randomizeType() {
+        foodType = random.nextInt(5) + 1; // Pilih angka 1-5
+    }
+
 
     
