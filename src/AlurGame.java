@@ -45,7 +45,7 @@ public class AlurGame extends Application {
     private void showLoginMenu(Stage stage) {
         Label labelUsername = new Label("Username:");
         TextField inputUsername = new TextField();
-        
+
         Label labelPassword = new Label("Password:");
         PasswordField inputPassword = new PasswordField();
 
@@ -78,10 +78,10 @@ public class AlurGame extends Application {
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
             arena = new Arena(WIDTH, HEIGHT);
-            snake = new Snake();
+            snake = new Snake(WIDTH / 2, HEIGHT / 2); // Posisi awal ular di tengah arena
             spawnFood();
 
-            gameOverXPosition = WIDTH * TILE_SIZE; 
+            gameOverXPosition = WIDTH * TILE_SIZE;
 
             Timeline snakeTimeline = new Timeline(new KeyFrame(Duration.millis(250), e -> run(gc)));
             snakeTimeline.setCycleCount(Timeline.INDEFINITE);
@@ -134,7 +134,7 @@ public class AlurGame extends Application {
             arena.draw(gc);
 
             gc.setFill(Color.RED);
-            gc.setFont(new Font("Goudy Stout",15));
+            gc.setFont(new Font("Goudy Stout", 15));
             gc.fillText("Score: " + score, 10, 20);
 
             snake.draw(gc);
@@ -168,18 +168,16 @@ public class AlurGame extends Application {
         double gameOverYPos = HEIGHT * TILE_SIZE / 2;
         gc.fillText(gameOverText, gameOverXPos, gameOverYPos);
 
-
         gc.setFont(new Font("Jokerman", 18));
-        String scoreText = "\n\nSELAMAT!!! " + username.toUpperCase() +"\n SCORE ANDA " + score;
+        String scoreText = "\n\nSELAMAT!!! " + username.toUpperCase() + "\n SCORE ANDA " + score;
         double scoreTextXPos = (WIDTH * TILE_SIZE - getTextWidth(scoreText, gc)) / 2;
-        gc.setFill(Color.BLUE);  
+        gc.setFill(Color.BLUE);
         gc.fillText(scoreText, scoreTextXPos, HEIGHT * TILE_SIZE / 2 + 50);
-
 
         gc.setFont(new Font("Castellar", 20));
         String restartText = "\n\n\nPress ENTER to Restart";
         double restartTextXPos = (WIDTH * TILE_SIZE - getTextWidth(restartText, gc)) / 2;
-        gc.setFill(Color.BLACK); 
+        gc.setFill(Color.BLACK);
         gc.fillText(restartText, restartTextXPos, HEIGHT * TILE_SIZE / 2 + 100);
     }
 
@@ -198,7 +196,6 @@ public class AlurGame extends Application {
             }
         }
     }
-
 
     private Scene createScene(Canvas canvas) {
         Scene scene = new Scene(new javafx.scene.Group(canvas));
@@ -222,7 +219,7 @@ public class AlurGame extends Application {
 
     private void resetGame() {
         score = 0;
-        snake = new Snake();
+        snake = new Snake(WIDTH / 2, HEIGHT / 2);
         spawnFood();
         gameOver = false;
         gameOverXPosition = WIDTH * TILE_SIZE;
@@ -232,7 +229,3 @@ public class AlurGame extends Application {
         launch(args);
     }
 }
-
-
-
-    
