@@ -81,7 +81,7 @@ public class AlurGame extends Application {
             snake = new Snake();
             spawnFood();
 
-            gameOverXPosition = WIDTH * TILE_SIZE; // Set initial position for game over text
+            gameOverXPosition = WIDTH * TILE_SIZE; 
 
             Timeline snakeTimeline = new Timeline(new KeyFrame(Duration.millis(250), e -> run(gc)));
             snakeTimeline.setCycleCount(Timeline.INDEFINITE);
