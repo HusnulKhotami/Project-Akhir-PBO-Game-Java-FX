@@ -182,3 +182,43 @@ public class AlurGame extends Application {
         gc.setFill(Color.BLACK); 
         gc.fillText(restartText, restartTextXPos, HEIGHT * TILE_SIZE / 2 + 100);
     }
+
+    private double getTextWidth(String text, GraphicsContext gc) {
+        Text t = new Text(text);
+        t.setFont(gc.getFont());
+        return t.getLayoutBounds().getWidth();
+    }
+
+    private void moveGameOverText(GraphicsContext gc) {
+        if (gameOver) {
+            gameOverXPosition -= 10;
+
+            if (gameOverXPosition + 300 < 0) {
+                gameOverXPosition = WIDTH * TILE_SIZE;
+            }
+        }
+    }
+
+
+    private Scene createScene(Canvas canvas) {
+        Scene scene = new Scene(new javafx.scene.Group(canvas));
+        scene.setOnKeyPressed(e -> {
+            KeyCode code = e.getCode();
+            String currentDirection = snake.getDirection();
+
+            if (gameOver && code == KeyCode.ENTER) {
+                resetGame();
+            } else {
+                switch (code) {
+                    case W: if (!currentDirection.equals("DOWN")) snake.setDirection("UP"); break;
+                    case S: if (!currentDirection.equals("UP")) snake.setDirection("DOWN"); break;
+                    case A: if (!currentDirection.equals("RIGHT")) snake.setDirection("LEFT"); break;
+                    case D: if (!currentDirection.equals("LEFT")) snake.setDirection("RIGHT"); break;
+                }
+            }
+        });
+        return scene;
+    }
+
+
+    
