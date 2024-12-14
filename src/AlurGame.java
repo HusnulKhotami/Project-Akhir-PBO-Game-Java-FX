@@ -220,5 +220,19 @@ public class AlurGame extends Application {
         return scene;
     }
 
+    private void resetGame() {
+        score = 0;
+        snake = new Snake();
+        spawnFood();
+        gameOver = false;
+        gameOverXPosition = WIDTH * TILE_SIZE;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
 
     
